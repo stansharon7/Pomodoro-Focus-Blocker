@@ -1,38 +1,50 @@
-//the logic for your popup
+let timerRunning = false;  // Variable to track if timer is running
+let timerInterval;
+let timer = 1 * 60; // 25 minutes in seconds
+const timerDisplay = document.getElementById('timer');
+const startButton = document.getElementById('start');
+const stopButton = document.getElementById('stop');
+const popupContainer = document.getElementById('popup-container');
 
-// Timer variable to track the countdown
-let timer;
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
 
-// Time starts at 25 minutes (converted to seconds)
-let timeLeft = 25 * 60;
+function startTimer() {
+    if (timerRunning) return; // Prevent starting the timer multiple times
 
-// Start Button: Begins the countdown
-document.getElementById("start").addEventListener("click", () => {
-    // Clear any existing timer before starting a new one
-    clearInterval(timer); 
+    timerRunning = true;
+    // Add the "active" class to start the darkening and brightening effects
+    document.body.classList.add('active');
 
-    // Start the countdown interval
-    timer = setInterval(() => {
-        if (timeLeft > 0) {
-            timeLeft--; // Decrease the countdown by 1 second
-            document.getElementById("timer").textContent = formatTime(timeLeft); // Display the updated time
-        } else {
-            // When time hits zero, stop the timer and alert the user
-            clearInterval(timer);
-            alert("Time's up! Take a break."); 
+    timerInterval = setInterval(function () {
+        if (timer <= 0) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.body.classList.remove('active');
+            alert("Time's up!");
+            return;
         }
-    }, 1000); // Runs every 1000 milliseconds (1 second)
-});
 
-// Stop Button: Ends the countdown immediately
-document.getElementById("stop").addEventListener("click", () => {
-    clearInterval(timer); // Stops the active timer
-});
-
-// Helper function: Formats the time (e.g., 25:00)
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60); // Get the minutes
-    const secs = seconds % 60; // Get the remaining seconds
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`; // Ensures proper "00" formatting
+        timer--;
+        updateTimerDisplay();
+    }, 1000);
 }
-  
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    timerRunning = false;
+    document.body.classList.remove('active');
+    timer = 1 * 60; // Reset the timer
+    updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+    let minutes = Math.floor(timer / 60);
+    let seconds = timer % 60;
+
+    if (seconds < 10) {
+        seconds = '0' + seconds;
+    }
+
+    timerDisplay.textContent = `${minutes}:${seconds}`;
+}
