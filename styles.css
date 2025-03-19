@@ -1,10 +1,18 @@
 /* Basic styling for the popup window */
 body {
-    font-family: Arial, sans-serif; /* Clean, simple font */
-    text-align: center;            /* Centers content */
-    padding: 20px;                 /* Adds space around content */
-    background-color: #f5f5f5;     /* Light background for better readability */
-  }
+    background-image: url('images/bgFlowers.png'); 
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+    height: 100vh;                
+    margin: 0;                   
+    display: flex;                /* Enables flexible positioning */
+    flex-direction: column;       /* Stacks content vertically */
+    justify-content: center;      /* Centers content vertically */
+    align-items: center;          /* Centers content horizontally */
+    text-align: center;           /* Ensures text stays centered */
+    color: white;                 
+}
   
   /* Header styling */
   h1 {
@@ -21,3 +29,5 @@ body {
     border-radius: 5px;         /* Rounded corners for modern design */
     cursor: pointer;            /* Pointer cursor when hovering */
   }
+
+  
