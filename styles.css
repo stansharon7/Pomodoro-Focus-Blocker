@@ -1,33 +1,71 @@
-/* Basic styling for the popup window */
+/* Popup Background (white) */
 body {
-    background-image: url('images/bgFlowers.png'); 
-    background-size: cover;       
-    background-position: center;  
-    background-repeat: no-repeat; 
-    height: 100vh;                
-    margin: 0;                   
-    display: flex;                /* Enables flexible positioning */
-    flex-direction: column;       /* Stacks content vertically */
-    justify-content: center;      /* Centers content vertically */
-    align-items: center;          /* Centers content horizontally */
-    text-align: center;           /* Ensures text stays centered */
-    color: white;                 
+    background-color: white;       /* White background for popup */
+    width: 300px;                  /* Fixed width */
+    height: 400px;                 /* Fixed height */
+    margin: 0;                     /* Removes default margin */
+    display: flex;
+    justify-content: center;       /* Centers content horizontally */
+    align-items: center;           /* Centers content vertically */
+    text-align: center;            /* Ensures text stays centered */
+    color: black;                  /* Dark text for better readability */
+    border-radius: 15px;           /* Rounded corners for the whole popup */
+    overflow: hidden;              /* Ensures content doesn't overflow the rounded corners */
 }
-  
-  /* Header styling */
-  h1 {
+
+/* Pomodoro Timer Container */
+#popup-container {
+    width: 270px;                  /* Slightly smaller for spacing */
+    height: 350px;                 /* Adjusted for better fit */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/bgFlowers.png'); 
+    background-size: cover;  
+    background-position: center;  
+    background-repeat: no-repeat;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for design */
+    border-radius: 10px;  /* Rounded corners for the container */
+}
+
+/* Header styling */
+h1 {
     color: #4CAF50; /* Green color for a positive, calm vibe */
-  }
-  
-  /* Button styling */
-  button {
-    margin: 5px;
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Same green theme */
-    color: white;               /* White text for contrast */
-    border: none;               /* No borders for a cleaner look */
-    border-radius: 5px;         /* Rounded corners for modern design */
-    cursor: pointer;            /* Pointer cursor when hovering */
-  }
+    margin-bottom: 20px; /* Adds space between header and timer */
+    font-size: 24px; /* Adjusts font size for header */
+}
+
+/* Timer display */
+p {
+    font-size: 18px;
+    margin-bottom: 20px; /* Adds space below the timer */
+}
+
+/* Button styling */
+button {
+    margin: 10px 0;               /* Adds space between buttons */
+    padding: 12px 25px;           /* Padding for buttons */
+    background-color: #4CAF50;    /* Green color */
+    color: white;                 /* White text */
+    border: none;                 /* Removes default border */
+    border-radius: 8px;           /* Rounded corners */
+    cursor: pointer;              /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background color change on hover */
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #45a049; /* Darker green when hovering */
+}
+
+/* Disabled button styling */
+button:disabled {
+    background-color: #ccc;     /* Light gray color for disabled state */
+    cursor: not-allowed;        /* Changes cursor to show it's disabled */
+}
+
 
   
